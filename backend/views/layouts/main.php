@@ -16,6 +16,7 @@ AppAsset::register($this);
 <!DOCTYPE html>
 <html lang="<?= Yii::$app->language ?>">
 <head>
+    <link rel="shortcut icon" href="http://www.controlgps.es/wp-content/uploads/2015/11/favicon.jpg" />
     <meta charset="<?= Yii::$app->charset ?>">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <?= Html::csrfMetaTags() ?>
@@ -71,7 +72,7 @@ AppAsset::register($this);
     <div class="container">
         <p class="pull-left">&copy; ControlGPS <?= date('Y') ?></p>
 
-        <p class="pull-right"><?= Yii::powered() ?></p>
+        <p class="pull-right">Desarrollado por Matias Luzardi</p>
     </div>
 </footer>
 
