@@ -9,12 +9,13 @@ use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
+
 /**
  * ReportController implements the CRUD actions for Report model.
  */
 class ReportController extends Controller {
 
-     /**
+    /**
      * @inheritdoc
      */
     public function behaviors() {
@@ -25,9 +26,10 @@ class ReportController extends Controller {
                     [
                         'actions' => ['login', 'error'],
                         'allow' => true,
+                        'roles' => ['?'],
                     ],
                     [
-                        'actions' => ['index','create','update','delete'],
+                        'actions' => ['index', 'create', 'update', 'delete', 'view'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -36,7 +38,11 @@ class ReportController extends Controller {
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'logout' => ['get', 'post'],
+                    'index' => ['get', 'post'],
+                    'create' => ['get', 'post'],
+                    'update' => ['get', 'post'],
+                    'delete' => ['get', 'post'],
+                    'view' => ['get', 'post'],
                 ],
             ],
         ];

@@ -14,7 +14,7 @@ use yii\filters\AccessControl;
  */
 class ServerController extends Controller {
 
-    /**
+     /**
      * @inheritdoc
      */
     public function behaviors() {
@@ -25,9 +25,10 @@ class ServerController extends Controller {
                     [
                         'actions' => ['login', 'error'],
                         'allow' => true,
+                        'roles' => ['?'],
                     ],
                     [
-                        'actions' => ['index','create','update','delete'],
+                        'actions' => ['index', 'create', 'update', 'delete', 'view'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
@@ -36,7 +37,11 @@ class ServerController extends Controller {
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'logout' => ['get', 'post'],
+                    'index' => ['get', 'post'],
+                    'create' => ['get', 'post'],
+                    'update' => ['get', 'post'],
+                    'delete' => ['get', 'post'],
+                    'view' => ['get', 'post'],
                 ],
             ],
         ];
