@@ -17,13 +17,13 @@ class UserController extends Controller
     /**
      * @inheritdoc
      */
-    public function behaviors()
+       public function behaviors()
     {
         return [
             'verbs' => [
                 'class' => VerbFilter::className(),
                 'actions' => [
-                    'delete' => ['POST'],
+                    'delete' => ['post'],
                 ],
             ],
         ];
@@ -64,7 +64,7 @@ class UserController extends Controller
     public function actionCreate()
     {
         $model = new User();
-
+   
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {

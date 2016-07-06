@@ -13,6 +13,7 @@ return [
     'bootstrap' => ['log'],
     'modules' => [],
     'components' => [
+
         'i18n' => [
             'translations' => [
                 'app*' => [
