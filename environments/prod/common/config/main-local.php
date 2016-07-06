@@ -10,7 +10,13 @@ return [
         ],
         'mailer' => [
             'class' => 'yii\swiftmailer\Mailer',
-            'viewPath' => '@common/mail',
-        ],
+            'transport' => [
+                'class' => 'Swift_SmtpTransport',
+                'host' => 'mail.cartamovil.com',
+                'username' => 'info@cartamovil.com',
+                'password' => 'Cartam0vil',
+                'port' => '587',
+                'encryption' => 'tls',
+            ],],
     ],
 ];
