@@ -1,6 +1,7 @@
 <?php
 
 namespace common\models;
+
 use yii\db\ActiveRecord;
 use Yii;
 
@@ -47,6 +48,7 @@ class Report extends \yii\db\ActiveRecord {
      */
     public function rules() {
         return [
+            [['description', 'title','typereport_id'], 'required'],
             [['description'], 'string'],
             [['typereport_id'], 'integer'],
             [['created_at'], 'safe'],
