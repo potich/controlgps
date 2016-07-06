@@ -27,7 +27,7 @@ class ReportController extends Controller {
                         'allow' => true,
                     ],
                     [
-                        'actions' => ['logout', 'index'],
+                        'actions' => ['index','create','update','delete'],
                         'allow' => true,
                         'roles' => ['@'],
                     ],
