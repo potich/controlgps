@@ -52,7 +52,11 @@ class WebservicesController extends Controller {
     public function actionReports($id) {
         \Yii::$app->response->format = 'json';
         $user = User::findOne(['id' => $id]);
-        $reports = \common\models\Report::find()->innerJoin('server_report', 'server_report.report_id = report.id')->where(['server_report.server_id' => $user->server->id])->asArray()->all();
+        $reports = \common\models\Report::find()
+                        ->select(['report.title', 'report.description', 'report.created_at', 'type_report.name AS type'])
+                        ->innerJoin('server_report', 'server_report.report_id = report.id')
+                        ->innerJoin('type_report', 'type_report.id = report.typereport_id')
+                        ->where(['server_report.server_id' => $user->server->id])->asArray()->all();
         return $reports;
     }
 
@@ -63,8 +67,15 @@ class WebservicesController extends Controller {
         return \Yii::$app->mailer->compose(['html' => 'contact-html'], ['model' => $user])
                         ->setFrom([$email => \Yii::$app->name . ' robot'])
                         ->setTo($user->email)
-                        ->setSubject("Recupero de contraseña ControlGPS")
+                        ->setSubject("Recuperación de contraseña ControlGPS")
                         ->send();
+    }
+
+    public function actionConfig() {
+        \Yii::$app->response->format = 'json';
+        $configs = \common\models\Configuracion::find()->asArray()->all();
+
+        return $configs;
     }
 
 }
