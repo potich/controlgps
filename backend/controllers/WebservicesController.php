@@ -63,16 +63,15 @@ class WebservicesController extends Controller {
     public function actionRecovery($email) {
         \Yii::$app->response->format = 'json';
         $user = User::findOne(['email' => $email]);
-
-        $result = \Yii::$app->mailer->compose(['html' => 'contact-html'], ['model' => $user])
-                ->setFrom([$email => \Yii::$app->name . ' robot'])
-                ->setTo($user->email)
-                ->setSubject("Recuperación de contraseña ControlGPS")
-                ->send();
-        if ($result) {
-            $response = ['response' => true];
+        if ($user) {
+            \Yii::$app->mailer->compose(['html' => 'contact-html'], ['model' => $user])
+                    ->setFrom([$email => \Yii::$app->name . ' robot'])
+                    ->setTo($user->email)
+                    ->setSubject("Recuperación de contraseña ControlGPS")
+                    ->send();
+            return ['response' => true];
         } else {
-            $response = ['response' => false];
+          return ['response' => false];
         }
     }
 
