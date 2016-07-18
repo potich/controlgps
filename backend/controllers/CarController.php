@@ -115,8 +115,9 @@ class CarController extends Controller {
      * @return mixed
      */
     public function actionDelete($id) {
-        $this->findModel($id)->delete();
-
+        $car = $this->findModel($id);
+        $car->active = false;
+        $car->save();
         return $this->redirect(['index']);
     }
 

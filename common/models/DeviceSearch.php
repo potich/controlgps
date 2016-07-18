@@ -10,13 +10,12 @@ use common\models\Device;
 /**
  * DeviceSearch represents the model behind the search form about `common\models\Device`.
  */
-class DeviceSearch extends Device
-{
+class DeviceSearch extends Device {
+
     /**
      * @inheritdoc
      */
-    public function rules()
-    {
+    public function rules() {
         return [
             [['id', 'brand_id'], 'integer'],
             [['name', 'RESET_GPS', 'OFF_IBUTTON', 'ON_IBUTTON'], 'safe'],
@@ -27,8 +26,7 @@ class DeviceSearch extends Device
     /**
      * @inheritdoc
      */
-    public function scenarios()
-    {
+    public function scenarios() {
         // bypass scenarios() implementation in the parent class
         return Model::scenarios();
     }
@@ -40,12 +38,11 @@ class DeviceSearch extends Device
      *
      * @return ActiveDataProvider
      */
-    public function search($params)
-    {
+    public function search($params) {
         $query = Device::find();
 
         // add conditions that should always apply here
-
+        $query->andWhere(['active' => true]);
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
@@ -66,10 +63,11 @@ class DeviceSearch extends Device
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'RESET_GPS', $this->RESET_GPS])
-            ->andFilterWhere(['like', 'OFF_IBUTTON', $this->OFF_IBUTTON])
-            ->andFilterWhere(['like', 'ON_IBUTTON', $this->ON_IBUTTON]);
+                ->andFilterWhere(['like', 'RESET_GPS', $this->RESET_GPS])
+                ->andFilterWhere(['like', 'OFF_IBUTTON', $this->OFF_IBUTTON])
+                ->andFilterWhere(['like', 'ON_IBUTTON', $this->ON_IBUTTON]);
 
         return $dataProvider;
     }
+
 }
