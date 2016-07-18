@@ -15,15 +15,10 @@ use yii\widgets\ActiveForm;
         'method' => 'get',
     ]); ?>
 
-    <?= $form->field($model, 'id') ?>
 
     <?= $form->field($model, 'licence') ?>
 
     <?= $form->field($model, 'telephone_number') ?>
-
-    <?= $form->field($model, 'user_id') ?>
-
-    <?= $form->field($model, 'device_id') ?>
 
     <?php // echo $form->field($model, 'active')->checkbox() ?>
 

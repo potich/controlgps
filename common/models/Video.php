@@ -3,6 +3,7 @@
 namespace common\models;
 
 use Yii;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "video".
@@ -17,23 +18,36 @@ use Yii;
  *
  * @property Server $server
  */
-class Video extends \yii\db\ActiveRecord
-{
+class Video extends ActiveRecord {
+
     /**
      * @inheritdoc
      */
-    public static function tableName()
-    {
+    public static function tableName() {
         return 'video';
     }
 
     /**
      * @inheritdoc
      */
-    public function rules()
-    {
+    public function behaviors() {
         return [
-            [['name', 'order', 'link_youtube', 'created_at', 'server_id'], 'required'],
+            'timestamp' => [
+                'class' => 'yii\behaviors\TimestampBehavior',
+                'attributes' => [
+                    ActiveRecord::EVENT_BEFORE_INSERT => ['created_at'],
+                ],
+                'value' => new \yii\db\Expression('NOW()'),
+            ],
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
+    public function rules() {
+        return [
+            [['name', 'order', 'link_youtube','server_id'], 'required'],
             [['order', 'server_id'], 'integer'],
             [['created_at'], 'safe'],
             [['active'], 'boolean'],
@@ -46,8 +60,7 @@ class Video extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
-    public function attributeLabels()
-    {
+    public function attributeLabels() {
         return [
             'id' => Yii::t('app', 'ID'),
             'name' => Yii::t('app', 'Name'),
@@ -62,8 +75,8 @@ class Video extends \yii\db\ActiveRecord
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getServer()
-    {
+    public function getServer() {
         return $this->hasOne(Server::className(), ['id' => 'server_id']);
     }
+
 }

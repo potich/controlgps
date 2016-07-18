@@ -10,13 +10,12 @@ use common\models\Video;
 /**
  * VideoSearch represents the model behind the search form about `common\models\Video`.
  */
-class VideoSearch extends Video
-{
+class VideoSearch extends Video {
+
     /**
      * @inheritdoc
      */
-    public function rules()
-    {
+    public function rules() {
         return [
             [['id', 'order', 'server_id'], 'integer'],
             [['name', 'link_youtube', 'created_at'], 'safe'],
@@ -27,8 +26,7 @@ class VideoSearch extends Video
     /**
      * @inheritdoc
      */
-    public function scenarios()
-    {
+    public function scenarios() {
         // bypass scenarios() implementation in the parent class
         return Model::scenarios();
     }
@@ -40,12 +38,12 @@ class VideoSearch extends Video
      *
      * @return ActiveDataProvider
      */
-    public function search($params)
-    {
+    public function search($params) {
         $query = Video::find();
 
         // add conditions that should always apply here
-
+        $query->andWhere(['active' => true]);
+        
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
         ]);
@@ -68,8 +66,9 @@ class VideoSearch extends Video
         ]);
 
         $query->andFilterWhere(['like', 'name', $this->name])
-            ->andFilterWhere(['like', 'link_youtube', $this->link_youtube]);
+                ->andFilterWhere(['like', 'link_youtube', $this->link_youtube]);
 
         return $dataProvider;
     }
+
 }

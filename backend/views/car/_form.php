@@ -2,6 +2,7 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Car */
@@ -16,9 +17,11 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'telephone_number')->textInput(['maxlength' => true]) ?>
 
-    <?= $form->field($model, 'user_id')->textInput() ?>
+    <?= $form->field($model, 'user_id')->dropDownList(ArrayHelper::map(common\models\User::find()->all(), 'id', 'username'), ['prompt' => Yii::t('app', 'Select...')]) ?>
 
-    <?= $form->field($model, 'device_id')->textInput() ?>
+    <?= $form->field($model, 'device_id')->dropDownList(ArrayHelper::map(common\models\Device::find()->all(), 'id', 'name'), ['prompt' => Yii::t('app', 'Select...')]) ?>
+
+
 
     <?= $form->field($model, 'active')->checkbox() ?>
 

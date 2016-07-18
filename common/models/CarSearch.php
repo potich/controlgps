@@ -10,13 +10,12 @@ use common\models\Car;
 /**
  * CarSearch represents the model behind the search form about `common\models\Car`.
  */
-class CarSearch extends Car
-{
+class CarSearch extends Car {
+
     /**
      * @inheritdoc
      */
-    public function rules()
-    {
+    public function rules() {
         return [
             [['id', 'user_id', 'device_id'], 'integer'],
             [['licence', 'telephone_number'], 'safe'],
@@ -27,8 +26,7 @@ class CarSearch extends Car
     /**
      * @inheritdoc
      */
-    public function scenarios()
-    {
+    public function scenarios() {
         // bypass scenarios() implementation in the parent class
         return Model::scenarios();
     }
@@ -40,11 +38,11 @@ class CarSearch extends Car
      *
      * @return ActiveDataProvider
      */
-    public function search($params)
-    {
+    public function search($params) {
         $query = Car::find();
 
         // add conditions that should always apply here
+        $query->andWhere(['active' => true]);
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -67,8 +65,9 @@ class CarSearch extends Car
         ]);
 
         $query->andFilterWhere(['like', 'licence', $this->licence])
-            ->andFilterWhere(['like', 'telephone_number', $this->telephone_number]);
+                ->andFilterWhere(['like', 'telephone_number', $this->telephone_number]);
 
         return $dataProvider;
     }
+
 }
