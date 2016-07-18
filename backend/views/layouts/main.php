@@ -36,6 +36,7 @@ AppAsset::register($this);
             ]);
             if (Yii::$app->user->identity) {
                 $menuItems = [
+                    ['label' => 'Inicio', 'url' => ['/site/index']],
                     ['label' => 'Videos', 'url' => ['/video/index']],
                     ['label' => 'Vehiculos', 'url' => ['/car/index']],
                     ['label' => 'Dispositivos', 'url' => ['/device/index']],
