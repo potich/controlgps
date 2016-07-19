@@ -4,13 +4,13 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\Server */
+/* @var $model common\models\Car */
 
-$this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Servers'), 'url' => ['index']];
+$this->title = $model->licence;
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Cars'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="server-view">
+<div class="car-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -28,9 +28,11 @@ $this->params['breadcrumbs'][] = $this->title;
     <?= DetailView::widget([
         'model' => $model,
         'attributes' => [
-            'name',
-            'url:url',
-            'ip',
+            'licence',
+            'telephone_number',
+            'user.username',
+            'device.name',
+            'active:boolean',
         ],
     ]) ?>
 

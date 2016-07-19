@@ -17,27 +17,6 @@
  * NOTE: this file must be saved in UTF-8 encoding.
  */
 return [
-    'Servers' =>'Servidores',
-    'Are you sure you want to delete this item?' => 'Seguro que desea eliminar el item?',
-    'Create' => 'Crear',
-    'Create Report' => 'Crear Noticia',
-    'Create Server' => 'Crear Servidor',
-    'Create User' => 'Crear Usuario',
     'Delete' => 'Eliminar',
-    'Reports' => 'Noticias',
-    'Reset' => 'Resetear',
-    'Search' => 'Buscar',
-    'Select...' => 'Seleccionar..',
-    'Servers' => 'Servidores',
     'Update' => 'Actualizar',
-    'Update {modelClass}: ' => 'Actualizar {modelClass}:',
-    'Users' => 'Usuarios',
-     'Created At' => 'Fecha Creación',
-    'Description' => 'Descripción',
-    'ID' => 'ID',
-    'Ip' => 'IP',
-    'Name' => 'Nombre',
-    'Title' => 'Titulo',
-    'Typereport ID' => 'Tipo',
-    'Url' => 'URL',
 ];

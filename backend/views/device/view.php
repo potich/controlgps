@@ -4,13 +4,13 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\Server */
+/* @var $model common\models\Device */
 
 $this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Servers'), 'url' => ['index']];
+$this->params['breadcrumbs'][] = ['label' => Yii::t('app', 'Devices'), 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="server-view">
+<div class="device-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -29,8 +29,14 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'name',
-            'url:url',
-            'ip',
+             [
+                'attribute' => 'brand.name',
+                'label' => Yii::t('app','Brand ID')
+            ],
+            'RESET_GPS',
+            'OFF_IBUTTON',
+            'ON_IBUTTON',
+            'active:boolean',
         ],
     ]) ?>
 
