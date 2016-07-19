@@ -78,11 +78,12 @@ class CarController extends Controller {
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
-    public function actionCreate() {
+    public function actionCreate($userId) {
         $model = new Car();
         $model->active = true;
+        $model->user_id = $userId;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['user/view', 'id' => $userId]);
         } else {
             return $this->render('create', [
                         'model' => $model,
@@ -100,7 +101,7 @@ class CarController extends Controller {
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
-            return $this->redirect(['view', 'id' => $model->id]);
+            return $this->redirect(['user/view', 'id' => $model->user_id]);
         } else {
             return $this->render('update', [
                         'model' => $model,

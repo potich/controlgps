@@ -167,4 +167,11 @@ class User extends ActiveRecord implements IdentityInterface {
         return $this->hasOne(Server::className(), ['id' => 'server_id']);
     }
 
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getCars() {
+        return $this->hasOne(Car::className(), ['user_id' => 'id']);
+    }
+
 }

@@ -71,7 +71,7 @@ class WebservicesController extends Controller {
                     ->send();
             return ['response' => true];
         } else {
-          return ['response' => false];
+            return ['response' => false];
         }
     }
 
@@ -80,6 +80,11 @@ class WebservicesController extends Controller {
         $configs = \common\models\Configuracion::find()->asArray()->all();
 
         return $configs;
+    }
+
+    // get licences 
+    public function actionCars() {
+        
     }
 
 }
