@@ -32,6 +32,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'email:email',
             'code',
             'server.name',
+            [
+                'attribute' => 'rol.name',
+                'label' => 'Rol'
+            ],
             // 'created_at',
             // 'updated_at',
             ['class' => 'yii\grid\ActionColumn'],
