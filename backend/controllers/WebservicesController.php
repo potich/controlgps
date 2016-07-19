@@ -38,7 +38,7 @@ class WebservicesController extends Controller {
         $user = User::find()->joinWith('rol')->where(['username' => $username, 'password' => $password])->one();
 
         if ($user) {
-            $response = ['User' => ['id' => $user->id, 'username' => $username, 'url' => $user->code]];
+            $response = ['User' => ['id' => $user->id, 'username' => $username, 'url' => $user->code, 'Rol' => $user->rol->name]];
         } else {
             $response = ['no'];
         }
