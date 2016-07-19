@@ -38,8 +38,17 @@ $this->params['breadcrumbs'][] = $this->title;
             ],
             // 'created_at',
             // 'updated_at',
-            ['class' => 'yii\grid\ActionColumn'],
-        ],
-    ]);
-    ?>
-    <?php Pjax::end(); ?></div>
+            ['class' => 'yii\grid\ActionColumn',
+                'template' => '{view} {update} {delete}',
+                'buttons' => [
+                    'view' => function ($url, $model) {
+                        return Html::a('<span class="glyphicon glyphicon-cog"></span>', yii\helpers\Url::to(['user/view', 'id' => $model->id]), [
+                                    'title' => Yii::t('yii', 'Update'),
+                        ]);
+                    },
+                        ]
+                    ],
+                ],
+            ]);
+            ?>
+            <?php Pjax::end(); ?></div>
