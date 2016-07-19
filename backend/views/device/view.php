@@ -29,7 +29,10 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'name',
-            'brand.name',
+             [
+                'attribute' => 'brand.name',
+                'label' => Yii::t('app','Brand ID')
+            ],
             'RESET_GPS',
             'OFF_IBUTTON',
             'ON_IBUTTON',

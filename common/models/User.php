@@ -49,7 +49,7 @@ class User extends ActiveRecord implements IdentityInterface {
     public function rules() {
         return [
             [['username', 'password', 'email'], 'required'],
-            [['server_id'], 'integer'],
+            [['server_id', 'rol_id'], 'integer'],
             [['code'], 'string'],
             [['email', 'username'], 'unique'],
             ['status', 'default', 'value' => self::STATUS_ACTIVE],
@@ -66,6 +66,8 @@ class User extends ActiveRecord implements IdentityInterface {
             'server_id' => Yii::t('app', 'Servers'),
             'code' => Yii::t('app', 'URL'),
             'server.name' => Yii::t('app', 'Servers'),
+            'rol_id' => Yii::t('app', 'Rol'),
+            'created_at' => Yii::t('app', 'Created At'),
         ];
     }
 

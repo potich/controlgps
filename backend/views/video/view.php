@@ -32,7 +32,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'order',
             'link_youtube',
             'created_at',
-            'server.name',
+            [
+                'attribute' => 'server.name',
+                'label' => Yii::t('app','server_id')
+            ],
             'active:boolean',
         ],
     ]) ?>

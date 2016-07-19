@@ -26,7 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'username',
             'email:email',
             'created_at:datetime',
-            'server.name',
+            'server.name'
         ],
     ])
     ?>
@@ -51,7 +51,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'columns' => [
                 'licence',
                 'telephone_number',
-                'device.name',
+                [
+                    'attribute' => 'device.name',
+                    'label' => 'Dispositivo',
+                ],
                 // 'active:boolean',
                 ['class' => 'yii\grid\ActionColumn',
                     'template' => '{update} {delete}',

@@ -13,18 +13,11 @@ return [
     'bootstrap' => ['log'],
     'modules' => [],
     'components' => [
-
         'i18n' => [
             'translations' => [
                 'app*' => [
                     'class' => 'yii\i18n\PhpMessageSource',
-                    //'basePath' => 'frontend/messages',
-                    // 'sourceLanguage' => 'es',
-                    // 'language' => 'es', 
-                    'fileMap' => [
-                        'app' => 'app.php',
-                        'app/error' => 'error.php',
-                    ],
+                    'basePath' => '@common/messages',
                 ],
             ],
         ],

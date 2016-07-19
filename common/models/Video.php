@@ -67,7 +67,7 @@ class Video extends ActiveRecord {
             'order' => Yii::t('app', 'Order'),
             'link_youtube' => Yii::t('app', 'Link Youtube'),
             'created_at' => Yii::t('app', 'Created At'),
-            'server_id' => Yii::t('app', 'Server ID'),
+            'server_id' => Yii::t('app', 'server_id'),
             'active' => Yii::t('app', 'Active'),
         ];
     }

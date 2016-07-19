@@ -27,7 +27,10 @@ $this->params['breadcrumbs'][] = $this->title;
             'RESET_GPS',
             'OFF_IBUTTON',
             'ON_IBUTTON',
-            'brand.name',
+            [
+                'attribute' => 'brand.name',
+                'label' => Yii::t('app','Brand ID')
+            ],
             // 'active:boolean',
             ['class' => 'yii\grid\ActionColumn'],
         ],
