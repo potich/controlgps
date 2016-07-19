@@ -35,7 +35,7 @@ class WebservicesController extends Controller {
     public function actionLogin($username, $password) {
 
         \Yii::$app->response->format = 'json';
-        $user = User::findOne(['username' => $username, 'password' => $password]);
+        $user = User::find()->joinWith('rol')->where(['username' => $username, 'password' => $password])->one();
 
         if ($user) {
             $response = ['User' => ['id' => $user->id, 'username' => $username, 'url' => $user->code]];
@@ -82,9 +82,27 @@ class WebservicesController extends Controller {
         return $configs;
     }
 
-    // get licences 
-    public function actionCars() {
-        
+    // get videos 
+    public function actionVideos($serverId) {
+        \Yii::$app->response->format = 'json';
+        $videos = \common\models\Video::find()
+                ->where(['server_id' => $serverId, 'active' => true])
+                ->asArray()
+                ->all();
+
+        return $videos;
+    }
+
+    // get cars 
+    public function actionCars($userId) {
+        \Yii::$app->response->format = 'json';
+        $cars = \common\models\Car::find()
+                ->joinWith(['user', 'device'])
+                ->andWhere(['user_id' => $userId, 'car.active' => true])
+                ->asArray()
+                ->all();
+
+        return $cars;
     }
 
 }
