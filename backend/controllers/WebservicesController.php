@@ -105,4 +105,22 @@ class WebservicesController extends Controller {
         return $cars;
     }
 
+    // get clients 
+    public function actionClients($userId) {
+        \Yii::$app->response->format = 'json';
+
+        $user = \common\models\User::findIdentity((int) $userId);
+
+        if ($user && $user->rol->name == 'TECHNICAL') {
+            $clients = \common\models\User::find()
+                    ->joinWith(['rol'])
+                    ->andWhere(['status' => 10, 'rol.name' => 'CLIENT'])
+                    ->asArray()
+                    ->all();
+        }
+
+
+        return $clients;
+    }
+
 }
