@@ -50,6 +50,7 @@ $this->params['breadcrumbs'][] = $this->title;
             'summary' => false,
             'columns' => [
                 'licence',
+                'install',
                 'telephone_number',
                 [
                     'attribute' => 'device.name',

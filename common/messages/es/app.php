@@ -18,7 +18,7 @@
  */
 return [
     '+ Vehiculo' => '',
-    'server_id' => 'Servidor',
+    'Install' => '¿Donde instalastes el GPS?',
     '{modelClass} ' => '',
     'Active' => 'Activo',
     'Are you sure you want to delete this item?' => '¿Seguro que desea eliminar?',
@@ -69,4 +69,5 @@ return [
     'Users' => 'Usuarios',
     'Value' => 'Valor',
     'Videos' => 'Videos',
+    'server_id' => 'Servidor',
 ];

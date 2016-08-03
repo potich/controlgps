@@ -17,26 +17,25 @@ use Yii;
  * @property Device $device
  * @property User $user
  */
-class Car extends \yii\db\ActiveRecord
-{
+class Car extends \yii\db\ActiveRecord {
+
     /**
      * @inheritdoc
      */
-    public static function tableName()
-    {
+    public static function tableName() {
         return 'car';
     }
 
     /**
      * @inheritdoc
      */
-    public function rules()
-    {
+    public function rules() {
         return [
             [['licence', 'user_id'], 'required'],
             [['user_id', 'device_id'], 'integer'],
             [['active'], 'boolean'],
             [['licence'], 'string', 'max' => 50],
+            [['install'], 'string', 'max' => 150],
             [['telephone_number'], 'string', 'max' => 60],
             [['device_id'], 'exist', 'skipOnError' => true, 'targetClass' => Device::className(), 'targetAttribute' => ['device_id' => 'id']],
             [['user_id'], 'exist', 'skipOnError' => true, 'targetClass' => User::className(), 'targetAttribute' => ['user_id' => 'id']],
@@ -46,8 +45,7 @@ class Car extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
-    public function attributeLabels()
-    {
+    public function attributeLabels() {
         return [
             'id' => Yii::t('app', 'ID'),
             'licence' => Yii::t('app', 'Licence'),
@@ -55,22 +53,22 @@ class Car extends \yii\db\ActiveRecord
             'user_id' => Yii::t('app', 'User ID'),
             'device_id' => Yii::t('app', 'Device ID'),
             'active' => Yii::t('app', 'Active'),
+            'install' => Yii::t('app', 'Install'),
         ];
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getDevice()
-    {
+    public function getDevice() {
         return $this->hasOne(Device::className(), ['id' => 'device_id']);
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getUser()
-    {
+    public function getUser() {
         return $this->hasOne(User::className(), ['id' => 'user_id']);
     }
+
 }

@@ -11,6 +11,8 @@ use yii\helpers\ArrayHelper;
 
     <?= $form->field($model, 'licence')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'install')->textInput(['maxlength' => true]) ?>
+
     <?= $form->field($model, 'telephone_number')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'user_id')->hiddenInput()->label(false) ?>
