@@ -42,7 +42,7 @@ return [
     'Devices' => 'Dispositivos',
     'ID' => 'ID',
     'Ip' => 'IP',
-    'Licence' => 'Licencia',
+    'Licence' => 'Matricula',
     'Link Youtube' => 'Link Youtube',
     'Name' => 'Nombre',
     'Off  Ibutton' => 'OFF IBUTTON',
