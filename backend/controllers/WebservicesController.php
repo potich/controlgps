@@ -124,7 +124,7 @@ class WebservicesController extends Controller {
     }
 
     // update car 
-    public function actionUpdateCar($id, $install) {
+    public function actionUpdatecar($id, $install) {
         \Yii::$app->response->format = 'json';
 
         $car = \common\models\Car::findOne(['id' => $id]);
@@ -132,9 +132,11 @@ class WebservicesController extends Controller {
         if ($car) {
             $car->install = $install;
             $car->save();
+        } else {
+            
         }
 
-        return $clients;
+        return $car;
     }
 
 }
