@@ -56,7 +56,7 @@ class WebservicesController extends Controller {
                         ->select(['report.title', 'report.description', 'report.created_at', 'type_report.name AS type'])
                         ->innerJoin('server_report', 'server_report.report_id = report.id')
                         ->innerJoin('type_report', 'type_report.id = report.typereport_id')
-                        ->where(['server_report.server_id' => $user->server->id])->asArray()->all();
+                        ->where(['server_report.server_id' => $user->server->id,'active'=>true])->asArray()->all();
         return $reports;
     }
 
