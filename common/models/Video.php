@@ -47,11 +47,12 @@ class Video extends ActiveRecord {
      */
     public function rules() {
         return [
-            [['name', 'order', 'link_youtube','server_id'], 'required'],
+            [['name', 'order', 'link_youtube', 'server_id'], 'required'],
             [['order', 'server_id'], 'integer'],
             [['created_at'], 'safe'],
             [['active'], 'boolean'],
             [['name'], 'string', 'max' => 255],
+            [['description'], 'string'],
             [['link_youtube'], 'string', 'max' => 300],
             [['server_id'], 'exist', 'skipOnError' => true, 'targetClass' => Server::className(), 'targetAttribute' => ['server_id' => 'id']],
         ];
@@ -69,6 +70,7 @@ class Video extends ActiveRecord {
             'created_at' => Yii::t('app', 'Created At'),
             'server_id' => Yii::t('app', 'server_id'),
             'active' => Yii::t('app', 'Active'),
+            'description'  => Yii::t('app', 'Description'),
         ];
     }
 

@@ -26,7 +26,6 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
             'title',
-            'description:ntext',
             'created_at',
             [                      // the owner name of the model
                 'label' => 'Tipo de Noticia',

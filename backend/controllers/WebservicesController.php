@@ -56,7 +56,7 @@ class WebservicesController extends Controller {
                         ->select(['report.title', 'report.description', 'report.created_at', 'type_report.name AS type'])
                         ->innerJoin('server_report', 'server_report.report_id = report.id')
                         ->innerJoin('type_report', 'type_report.id = report.typereport_id')
-                        ->where(['server_report.server_id' => $user->server->id,'active'=>true])->asArray()->all();
+                        ->where(['server_report.server_id' => $user->server->id, 'active' => true])->asArray()->all();
         return $reports;
     }
 
@@ -119,6 +119,20 @@ class WebservicesController extends Controller {
                     ->all();
         }
 
+
+        return $clients;
+    }
+
+    // update car 
+    public function actionUpdateCar($id, $install) {
+        \Yii::$app->response->format = 'json';
+
+        $car = \common\models\Car::findOne(['id' => $id]);
+
+        if ($car) {
+            $car->install = $install;
+            $car->save();
+        }
 
         return $clients;
     }

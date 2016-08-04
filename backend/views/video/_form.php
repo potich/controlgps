@@ -12,7 +12,9 @@ use yii\helpers\ArrayHelper;
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'order')->textInput() ?>
-
+    
+    <?= $form->field($model, 'description')->textarea() ?>
+    
     <?= $form->field($model, 'link_youtube')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'server_id')->dropDownList(ArrayHelper::map(common\models\Server::find()->all(), 'id', 'name'), ['prompt' => Yii::t('app', 'Select...')]) ?>
