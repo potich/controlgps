@@ -18,7 +18,7 @@
  */
 return [
     '+ Vehiculo' => '',
-    'Install' => '¿Donde instalastes el GPS?',
+    'hasIbutton' => '¿Tiene iButton?',
     '{modelClass} ' => '',
     'Active' => 'Activo',
     'Are you sure you want to delete this item?' => '¿Seguro que desea eliminar?',
@@ -41,6 +41,7 @@ return [
     'Device ID' => 'Dispositivo',
     'Devices' => 'Dispositivos',
     'ID' => 'ID',
+    'Install' => '¿Donde instalastes el GPS?',
     'Ip' => 'IP',
     'Licence' => 'Matricula',
     'Link Youtube' => 'Link Youtube',

@@ -34,6 +34,7 @@ class Car extends \yii\db\ActiveRecord {
             [['licence', 'user_id'], 'required'],
             [['user_id', 'device_id'], 'integer'],
             [['active'], 'boolean'],
+            [['hasIbutton'], 'boolean'],
             [['licence'], 'string', 'max' => 50],
             [['install'], 'string', 'max' => 150],
             [['telephone_number'], 'string', 'max' => 60],
@@ -54,6 +55,7 @@ class Car extends \yii\db\ActiveRecord {
             'device_id' => Yii::t('app', 'Device ID'),
             'active' => Yii::t('app', 'Active'),
             'install' => Yii::t('app', 'Install'),
+            'hasIbutton'=> Yii::t('app', 'hasIbutton'),
         ];
     }
 
