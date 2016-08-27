@@ -7,6 +7,7 @@ use yii\web\Controller;
 use yii\filters\VerbFilter;
 use yii\filters\AccessControl;
 use common\models\LoginForm;
+use common\models\User;
 
 /**
  * Site controller
@@ -68,7 +69,7 @@ class SiteController extends Controller {
         $respose = $model->load(Yii::$app->request->post());
         if ($respose) {
             $user = User::findByUsername($model->username);
-            if ($user->rol->name == "CLIENT") {
+            if ($user && $user->rol->name == "CLIENT") {
                 return $this->render('login', [
                             'model' => $model,
                 ]);
