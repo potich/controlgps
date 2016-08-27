@@ -66,7 +66,7 @@ class SiteController extends Controller {
 
         $model = new LoginForm();
         $respose = $model->load(Yii::$app->request->post());
-        if ($response) {
+        if ($respose) {
             $user = User::findByUsername($model->username);
             if ($user->rol->name == "CLIENT") {
                 return $this->render('login', [
