@@ -87,6 +87,7 @@ class WebservicesController extends Controller {
         \Yii::$app->response->format = 'json';
         $videos = \common\models\Video::find()
                 ->where(['server_id' => $serverId, 'active' => true])
+                ->orderBy('created_at DESC')
                 ->asArray()
                 ->all();
 
