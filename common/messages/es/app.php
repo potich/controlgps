@@ -18,8 +18,10 @@
  */
 return [
     '+ Vehiculo' => '',
-    'hasIbutton' => '¿Tiene iButton?',
+    'Enrollment' => 'Matricula',
+    'Video ID' => '',
     '{modelClass} ' => '',
+    'server_id' => '@@Servidor@@',
     'Active' => 'Activo',
     'Are you sure you want to delete this item?' => '¿Seguro que desea eliminar?',
     'Brand Devices' => 'Marca',
@@ -43,7 +45,7 @@ return [
     'ID' => 'ID',
     'Install' => '¿Donde instalastes el GPS?',
     'Ip' => 'IP',
-    'Licence' => 'Matricula',
+    'Licence' => 'Licencia',
     'Link Youtube' => 'Link Youtube',
     'Name' => 'Nombre',
     'Off  Ibutton' => 'OFF IBUTTON',
@@ -70,5 +72,5 @@ return [
     'Users' => 'Usuarios',
     'Value' => 'Valor',
     'Videos' => 'Videos',
-    'server_id' => 'Servidor',
+    'hasIbutton' => '¿Tiene iButton?',
 ];

@@ -31,10 +31,12 @@ class Car extends \yii\db\ActiveRecord {
      */
     public function rules() {
         return [
-            [['licence', 'user_id'], 'required'],
+
+            [['licence', 'user_id', 'enrollment'], 'required'],
             [['user_id', 'device_id'], 'integer'],
             [['active'], 'boolean'],
             [['hasIbutton'], 'boolean'],
+            [['enrollment'], 'string', 'max' => 150],
             [['licence'], 'string', 'max' => 50],
             [['install'], 'string', 'max' => 150],
             [['telephone_number'], 'string', 'max' => 60],
@@ -55,7 +57,8 @@ class Car extends \yii\db\ActiveRecord {
             'device_id' => Yii::t('app', 'Device ID'),
             'active' => Yii::t('app', 'Active'),
             'install' => Yii::t('app', 'Install'),
-            'hasIbutton'=> Yii::t('app', 'hasIbutton'),
+            'hasIbutton' => Yii::t('app', 'hasIbutton'),
+            'enrollment' =>Yii::t('app', 'Enrollment'),
         ];
     }
 

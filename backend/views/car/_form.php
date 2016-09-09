@@ -11,6 +11,9 @@ use yii\helpers\ArrayHelper;
 
     <?= $form->field($model, 'licence')->textInput(['maxlength' => true]) ?>
 
+    <?= $form->field($model, 'enrollment')->textInput(['maxlength' => true]) ?>
+
+
     <?= $form->field($model, 'install')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'telephone_number')->textInput(['maxlength' => true]) ?>
@@ -18,8 +21,8 @@ use yii\helpers\ArrayHelper;
     <?= $form->field($model, 'user_id')->hiddenInput()->label(false) ?>
 
     <?= $form->field($model, 'device_id')->dropDownList(ArrayHelper::map(common\models\Device::find()->all(), 'id', 'name'), ['prompt' => Yii::t('app', 'Select...')]) ?>
-   
-     <?= $form->field($model, 'hasIbutton')->checkbox() ?>
+
+    <?= $form->field($model, 'hasIbutton')->checkbox() ?>
 
     <?= $form->field($model, 'active')->checkbox() ?>
 
