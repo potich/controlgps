@@ -4,7 +4,7 @@ return [
         'db' => [
             'class' => 'yii\db\Connection',
             'dsn' => 'mysql:host=localhost;dbname=flotasgps_app',
-            'username' => 'flotasgps',
+            'username' => 'flotasgps_app',
             'password' => 'Cartam0vil',
             'charset' => 'utf8',
         ],
