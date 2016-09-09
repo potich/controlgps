@@ -13,12 +13,12 @@ use yii\db\ActiveRecord;
  * @property integer $order
  * @property string $link_youtube
  * @property string $created_at
- * @property integer $server_id
  * @property boolean $active
  *
- * @property Server $server
  */
 class Video extends ActiveRecord {
+
+    public $server_id;
 
     /**
      * @inheritdoc
@@ -47,14 +47,14 @@ class Video extends ActiveRecord {
      */
     public function rules() {
         return [
-            [['name', 'order', 'link_youtube', 'server_id'], 'required'],
-            [['order', 'server_id'], 'integer'],
+            [['name', 'order', 'link_youtube'], 'required'],
+            [['order'], 'integer'],
             [['created_at'], 'safe'],
             [['active'], 'boolean'],
+            ['server_id', 'safe'],
             [['name'], 'string', 'max' => 255],
             [['description'], 'string'],
             [['link_youtube'], 'string', 'max' => 300],
-            [['server_id'], 'exist', 'skipOnError' => true, 'targetClass' => Server::className(), 'targetAttribute' => ['server_id' => 'id']],
         ];
     }
 
@@ -68,17 +68,23 @@ class Video extends ActiveRecord {
             'order' => Yii::t('app', 'Order'),
             'link_youtube' => Yii::t('app', 'Link Youtube'),
             'created_at' => Yii::t('app', 'Created At'),
-            'server_id' => Yii::t('app', 'server_id'),
             'active' => Yii::t('app', 'Active'),
-            'description'  => Yii::t('app', 'Description'),
+            'description' => Yii::t('app', 'Description'),
         ];
+    }
+
+    public function addServer($server) {
+        $item = new ServerVideo();
+        $item->server_id = $server;
+        $item->video_id = $this->id;
+        $item->save();
     }
 
     /**
      * @return \yii\db\ActiveQuery
      */
-    public function getServer() {
-        return $this->hasOne(Server::className(), ['id' => 'server_id']);
+    public function getServerVideos() {
+        return $this->hasMany(ServerVideo::className(), ['video_id' => 'id']);
     }
 
 }

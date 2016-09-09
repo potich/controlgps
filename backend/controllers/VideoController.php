@@ -62,6 +62,13 @@ class VideoController extends Controller {
         ]);
     }
 
+    public function saveServers($servers, $video) {
+        \common\models\ServerVideo::deleteAll(['video_id' => $video->id]);
+        foreach ($servers as $id) {
+            $video->addServer($id);
+        }
+    }
+
     /**
      * Displays a single Video model.
      * @param integer $id
@@ -82,6 +89,9 @@ class VideoController extends Controller {
         $model = new Video();
         $model->active = true;
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+            if (isset(Yii::$app->request->post()['servers'])) {
+                $this->saveServers(Yii::$app->request->post()['servers'], $model);
+            }
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('create', [
@@ -100,6 +110,10 @@ class VideoController extends Controller {
         $model = $this->findModel($id);
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
+        
+            if (isset(Yii::$app->request->post()['servers'])) {
+                $this->saveServers(Yii::$app->request->post()['servers'], $model);
+            }
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
             return $this->render('update', [

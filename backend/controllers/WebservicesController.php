@@ -38,7 +38,7 @@ class WebservicesController extends Controller {
         $user = User::find()->joinWith('rol')->where(['username' => $username, 'password' => $password])->one();
 
         if ($user) {
-            $response = ['User' => ['id' => $user->id, 'username' => $username, 'url' => $user->code, 'Rol' => $user->rol->name,'Server'=>($user->rol->name == 'CLIENT') ? $user->server->id : null]];
+            $response = ['User' => ['id' => $user->id, 'username' => $username, 'url' => $user->code, 'Rol' => $user->rol->name, 'Server' => ($user->rol->name == 'CLIENT') ? $user->server->id : null]];
         } else {
             $response = ['no'];
         }
@@ -88,8 +88,9 @@ class WebservicesController extends Controller {
     public function actionVideos($serverId) {
         \Yii::$app->response->format = 'json';
         $videos = \common\models\Video::find()
-                ->where(['server_id' => $serverId, 'active' => true])
-               
+                ->innerJoin('server_video', 'server_video.video_id = video.id')
+                ->where(['server_video.server_id' => $serverId, 'active' => true])
+                ->orderBy('video.order ASC')
                 ->asArray()
                 ->all();
 
