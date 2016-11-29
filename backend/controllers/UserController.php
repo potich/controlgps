@@ -15,7 +15,7 @@ use yii\filters\AccessControl;
  */
 class UserController extends Controller {
 
-      /**
+    /**
      * @inheritdoc
      */
     public function behaviors() {
@@ -98,7 +98,7 @@ class UserController extends Controller {
      */
     public function actionUpdate($id) {
         $model = $this->findModel($id);
-        
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
@@ -115,8 +115,9 @@ class UserController extends Controller {
      * @return mixed
      */
     public function actionDelete($id) {
-        $this->findModel($id)->delete();
-
+        $model = $this->findModel($id);
+        $model->status = 0;
+        $model->save();
         return $this->redirect(['index']);
     }
 
