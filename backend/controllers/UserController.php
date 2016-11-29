@@ -116,8 +116,8 @@ class UserController extends Controller {
      */
     public function actionDelete($id) {
         $model = $this->findModel($id);
-        $model->email = "hdp".$model->email;
-        $model->username = "hdp".$model->username;
+        $model->email = uniqid().$model->email;
+        $model->username = uniqid().$model->username;
         $model->status = 0;
         $model->save();
         return $this->redirect(['index']);
